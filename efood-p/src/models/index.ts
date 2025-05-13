@@ -1,9 +1,9 @@
-export type Restaurant = {
+export type Product = {
     id: number
-    title: string
+    name: string
     description: string
-    infos: string[]
-    rating: number
     image: string
+    price: number
+    infos: string[]
   }
   

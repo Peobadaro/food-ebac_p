@@ -2,39 +2,67 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
   background-color: #fff;
-  border: 1px solid #e66767;
-  padding: 8px;
+  padding: 16px;
   border-radius: 8px;
+  margin-bottom: 16px;
 `
 
 export const Image = styled.div`
+  height: 150px;
   background-size: cover;
   background-position: center;
-  height: 200px;
-  border-radius: 8px 8px 0 0;
-  position: relative;
+  border-radius: 8px;
 `
 
-export const Infos = styled.div`
-  position: absolute;
-  top: 8px;
-  right: 8px;
+export const Info = styled.div`
+  margin-top: 8px;
   display: flex;
-  gap: 4px;
+  gap: 8px;
+  flex-wrap: wrap;
 `
 
-export const Title = styled.h3`
-  font-size: 18px;
-  margin: 8px 0 4px;
+export const Tag = styled.span`
+  background-color: #e66767;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+`
+
+export const Title = styled.h2`
+  margin-top: 12px;
+  font-size: 20px;
+  color: #e66767;
 `
 
 export const Description = styled.p`
-  font-size: 14px;
+  margin-top: 8px;
   color: #555;
+  font-size: 14px;
 `
+---
 
-export const Rating = styled.span`
-  font-weight: bold;
-  color: #e66767;
-  font-size: 16px;
-`
+### 🧱 Agora no `Home/index.tsx`:
+
+```tsx
+import Header from '../../components/Header'
+import RestaurantCard from '../../components/RestaurantCard'
+
+const Home = () => {
+  return (
+    <>
+      <Header />
+      <div className="container">
+        <RestaurantCard
+          title="La Pasta"
+          description="Deliciosas massas artesanais direto da Itália"
+          infos={['Italiana', 'Massas']}
+          image="/assets/restaurant-1.jpg"
+        />
+        {/* Adicione mais cards conforme necessário */}
+      </div>
+    </>
+  )
+}
+
+export default Home

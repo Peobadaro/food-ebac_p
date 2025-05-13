@@ -1,5 +1,5 @@
+import { Restaurant } from '../../models/restaurant'
 import RestaurantCard from '../RestaurantCard'
-import { Restaurant } from '../../models'
 import { List } from './styles'
 
 type Props = {
@@ -8,8 +8,15 @@ type Props = {
 
 const RestaurantList = ({ restaurants }: Props) => (
   <List>
-    {restaurants.map((restaurant) => (
-      <RestaurantCard key={restaurant.id} {...restaurant} />
+    {restaurants.map((restaurante) => (
+      <RestaurantCard
+        key={restaurante.id}
+        title={restaurante.title}
+        description={restaurante.description}
+        image={restaurante.image}
+        category={restaurante.category}
+        rating={restaurante.rating}
+      />
     ))}
   </List>
 )
