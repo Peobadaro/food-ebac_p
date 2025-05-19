@@ -1,36 +1,24 @@
-import RestaurantCard from '../../components/RestaurantCard'
-import RestaurantList from '../../components/RestaurantList'
+import Footer from '../../components/Footer' // Importa o componente Footer para exibir o rodapé da página
+import Hero from '../../components/Hero' // Importa o componente Hero para exibir o banner principal da página
+import RestaurantsList from '../../components/RestaurantsList' // Importa o componente RestaurantsList para exibir a lista de restaurantes
 
-const restaurants = [
-  {
-    id: 1,
-    title: 'La Dolce Vita Trattoria',
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis.',
-    image: '/src/images/restaurant-italiano.png',
-    category: 'Italiana',
-    rating: 4.6,
-    products: [],
-    infos: ['Italiana', '4.6']
-  },
-  {
-    id: 2,
-    title: 'Hioki Sushi',
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
-    image: '/src/images/restaurant-japonesa.png',
-    category: 'Japonesa',
-    rating: 4.9,
-    products: [],
-    infos: ['Japonesa', '4.9']
-  }
-]
+import { useGetRestaurantsQuery } from '../../services/api' // Importa o hook para buscar os dados dos restaurantes
 
-const Home = () => (
-  <div className="container">
-    <RestaurantList restaurants={restaurants} />
-  </div>
-)
+// Componente Home que representa a página inicial
+const Home = () => {
+  // Faz a consulta para obter os dados dos restaurantes e o estado de carregamento
+  const { data: restaurants, isLoading } = useGetRestaurantsQuery(undefined) // Passa 'undefined' como argumento
+
+  return (
+    <>
+      {/* Componente Hero para exibir o banner principal */}
+      <Hero />
+      {/* Componente RestaurantsList para exibir a lista de restaurantes */}
+      <RestaurantsList restaurants={restaurants} isLoading={isLoading} />
+      {/* Componente Footer para exibir o rodapé da página */}
+      <Footer />
+    </>
+  )
+}
 
 export default Home
-  
